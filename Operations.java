@@ -207,6 +207,7 @@ public class Operations {
     }
     position--;
     StringNode theRestOfList = insertAStringIntoMyList(M.next, insertee, position);
+    
     return theRestOfList;
   }  
   
