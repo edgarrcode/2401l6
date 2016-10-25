@@ -52,7 +52,7 @@ public class Operations {
     
     LL=insertAStringIntoMyList(LL, "ABBA", 3);
     LL=insertAStringIntoMyList(LL, "DoGeeseSeeGod", 3);    
-        
+
     int c = countPalindromes(LL);
     System.out.println("Found "+c+" palindromes.");
     
@@ -182,7 +182,6 @@ public class Operations {
       StringNode theRestOfList = removeAStringFromMyList(M.next, removee);
       tempNode.next = theRestOfList;
       return tempNode;
-
     }
   }
 
@@ -200,15 +199,19 @@ public class Operations {
     if (M.next == null) {
         return M;
     }
+
+    StringNode tempNode = new StringNode(M.head);
+
     if (position == 0) {
       StringNode inserteeStringNode = new StringNode(insertee);
       inserteeStringNode.next = M;
-      M = inserteeStringNode;
+      return inserteeStringNode;
+    } else {
+      position--;
+      StringNode theRestOfList = insertAStringIntoMyList(M.next, insertee, position);
+      tempNode.next = theRestOfList;
+      return tempNode;
     }
-    position--;
-    StringNode theRestOfList = insertAStringIntoMyList(M.next, insertee, position);
-    
-    return theRestOfList;
   }  
   
   /* Write a recursive method to verify if the strings are 
@@ -247,6 +250,7 @@ public class Operations {
     }
 
     if (isPalindrome(M.head)) {
+        System.out.println("Palindrome: " + M.head);
         return 1 + countPalindromes(M.next);
     }
     return 0 + countPalindromes(M.next);
@@ -261,7 +265,7 @@ public class Operations {
         }
 
         // check first and last characters of string
-        if (s.charAt(1) != s.charAt(s.length() - 1) ) {
+        if (Character.toLowerCase(s.charAt(0)) != Character.toLowerCase(s.charAt(s.length() - 1)) ) {
           return false;
         }
 
